@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
-import exercise1 from "../src";
-import { testCases, expectedResults } from './fixtures/testCases';
+import exercise1 from "../src/rules.js";
+import { testCases, expectedResults } from './fixtures/testCases.js';
 
 describe('Exercise 1', () => {
   testCases.forEach((input, index) => {
