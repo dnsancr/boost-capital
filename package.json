@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "exercise-1": "node ./exercise-1/src/index.js",
+    "exercise-2": "node ./exercise-2/src/index.js",
     "lint": "biome check --write .",
     "test": "vitest run"
   },
