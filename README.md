@@ -44,3 +44,8 @@ npm run test
 
 La documentacion relacionada a los ultimos bugs pendientes de resolver puede ser consultada en [KnownBugs.md](./KnownBugs.md)
 
+
+## Requerimientos
+
+Los requerimientos de esta prueba tecnica pueden ser consultados en [requirements.pdf](./requirements.pdf)
+
