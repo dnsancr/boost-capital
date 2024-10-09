@@ -1,4 +1,10 @@
-const input = 'hi ((how) are) you (today) [[[my dear friend]]]';
+const inputs = [
+  'hi ((how) are) you (today) [[[my dear friend]]]',
+  'esto es (un texto muy random [si lo es]) [etc]',
+  'hola (como estas) [bien] y tu',
+  '((esta es la cadena inicial))',
+  '(anidados (así)))',
+];
 
 const validInput = (input) => {
   const stack = [];
@@ -25,6 +31,7 @@ const validInput = (input) => {
 const rule1 = (str) => {
   let count = 0;
   let start = 0;
+  let output = '';
 
   for (let i = 0; i < str.length; i++) {
     if (str[i] === '(') {
@@ -32,27 +39,26 @@ const rule1 = (str) => {
         start = i;
       }
       count++;
-    }
-
-    if (str[i] === ')') {
+    } else if (str[i] === ')') {
       count--;
       if (count === 0) {
-        return {
-          content: `(${str
-            .slice(start + 1, i)
-            .split('')
-            .reverse()
-            .join('')})`,
-          end: i,
-        };
+        output += `(${str
+          .slice(start + 1, i)
+          .split('')
+          .reverse()
+          .join('')})`;
       }
+    } else if (count === 0) {
+      output += str[i];
     }
   }
+  return output;
 };
 
 const rule2 = (str) => {
   let count = 0;
   let start = 0;
+  let output = '';
 
   for (let i = 0; i < str.length; i++) {
     if (str[i] === '[') {
@@ -60,22 +66,20 @@ const rule2 = (str) => {
         start = i;
       }
       count++;
-    }
-
-    if (str[i] === ']') {
+    } else if (str[i] === ']') {
       count--;
       if (count === 0) {
-        return {
-          content: `[${str
-            .slice(start + 1, i)
-            .split(' ')
-            .map((word) => word.split('').reverse().join(''))
-            .join(' ')}]`,
-          end: i,
-        };
+        output += `[${str
+          .slice(start + 1, i)
+          .split(' ')
+          .map((word) => word.split('').reverse().join(''))
+          .join(' ')}]`;
       }
+    } else if (count === 0) {
+      output += str[i];
     }
   }
+  return output;
 };
 
 const rule3 = (str) => {
@@ -85,9 +89,16 @@ const rule3 = (str) => {
     .join(' ');
 };
 
-console.log(input);
-console.log(validInput(input));
-console.log(rule1(input));
-console.log(rule2(input));
-console.log(rule3(input));
-console.log(input.length);
+inputs.forEach((input) => {
+  console.log('Input:', input);
+  if (validInput(input)) {
+    let output = rule1(input);
+    output = rule2(output);
+    if (output.split(' ').length >= 3) {
+      output = rule3(output);
+    }
+    console.log(`Output: ${output}\n`);
+  } else {
+    console.log('Output: Invalid input');
+  }
+});
