@@ -54,7 +54,8 @@
         "useTopLevelRegex": "off"
       },
       "suspicious": {
-        "noConsoleLog": "warn",
+        "noConsole": "off",
+        "noConsoleLog": "off",
         "noReactSpecificProps": "off"
       },
       "style": {
