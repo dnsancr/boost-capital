@@ -1,0 +1,79 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.3/schema.json",
+  "files": {
+    "include": ["**/src/**", "**/tests/**", "**/index.js"],
+    "ignore": ["**/public/**", "**/data/**"],
+    "ignoreUnknown": true
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+    "defaultBranch": "main"
+  },
+  "organizeImports": {
+    "enabled": false
+  },
+  "json": {
+    "parser": {
+      "allowComments": false,
+      "allowTrailingCommas": false
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "single",
+      "semicolons": "always"
+    }
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "all": true,
+      "a11y": {
+        "useButtonType": "off"
+      },
+      "complexity": {
+        "noForEach": "off"
+      },
+      "correctness": {
+        "noNodejsModules": "off",
+        "useExhaustiveDependencies": "off",
+        "useImportExtensions": "off",
+        "noUndeclaredDependencies": "off"
+      },
+      "performance": {
+        "noBarrelFile": "off",
+        "noReExportAll": "off",
+        "useTopLevelRegex": "off"
+      },
+      "suspicious": {
+        "noConsoleLog": "warn",
+        "noReactSpecificProps": "off"
+      },
+      "style": {
+        "useForOf": "off",
+        "noDefaultExport": "off",
+        "noImplicitBoolean": "off",
+        "noNegationElse": "off",
+        "noParameterProperties": "off",
+        "noRestrictedGlobals": "off",
+        "useNamingConvention": "off",
+        "noNamespaceImport": "off",
+        "useFilenamingConvention": {
+          "level": "error",
+          "options": {
+            "requireAscii": true,
+            "filenameCases": ["kebab-case", "camelCase", "PascalCase", "export"]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,77 @@
+Crea un programa que transforme cadenas de texto siguiendo las siguientes instrucciones:
+  * El orden del texto se debe de invertir si se encuentra dentro de paréntesis
+    i. (esto es un ejemplo) → (olpmeje nu se otse)
+  * Las palabras individuales se deben invertir si la cadena se encuentra dentro de corchetes
+    i. [esto es un ejemplo] → [otse se nu olpmeje]
+  * Si la cadena de texto contiene 3 o más palabras cada palabra par debe estar escrita en mayúsculas
+    i. Esto es un ejemplo → Esto ES un EJEMPLO
+
+Las reglas se deben de aplicar en el orden indicado
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Search "Magic: The Gathering" cards
+
+INPUT:
+  * color [white, blue, red, green, black]
+    type [creature, enchantment, sorcery, instant]
+  Ignore cards without color or more than one color
+
+OUTPUT:
+  3 most recently published cards of the color and type
+
+
+https://api.scryfall.com
+HTTP requests headers:
+  User-Agent (MTGExampleApp/1.0)
+  Accept (*/*, application/json;q=0.9, */*;q=0.8)
+
+Rate Limits and Good Citizenship:
+  Insert 50 – 100 milliseconds of delay between requests (i.e., 10 requests per second on average)
+  HTTP 429 Too Many Requests status code
+  File origins used by the API, located at *.scryfall.io do not have these rate limits
+  Cache data you download from Scryfall or process it locally in your own database, at least for 24 hours
+
+GET /cards/search
+  Returns a List object containing Cards found using a fulltext search string
+  This method is paginated, returning 175 cards at a time
+  
+  Parameter:
+    q 	                A fulltext search query. Maximum length: 1000 Unicode characters
+    order  released     Sort cards by their release date: Newest → Oldest
+    dir    [asc, desc]  Sort descending (flip the direction of the arrows in the previous table)
+
+/search?q=id%3Ac+t%3Aland   (:	%3A)
+/search?q=id:c+t:land
+
+/cards/search?q=c:r+t:creature&order=released
+/cards/search?q=c:r+t:creature&order=released&dir=desc
+
+
+GET /catalog/card-types
+[
+"Artifact",
+"Battle",
+"Conspiracy",
+"Creature",
+"Dungeon",
+"Emblem",
+"Enchantment",
+"Hero",
+"Instant",
+"Kindred",
+"Land",
+"Phenomenon",
+"Plane",
+"Planeswalker",
+"Scheme",
+"Sorcery",
+"Vanguard"
+]
+
+
+https://magic.wizards.com/en/how-to-play
+https://scryfall.com/docs/syntax
+https://scryfall.com/docs/api/catalogs/card-types
+https://scryfall.com/docs/api/cards/search
+
