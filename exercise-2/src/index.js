@@ -12,13 +12,13 @@ const getLatestCards = async ({ color, type }) => {
 
 const getCardParams = () => {
   const prompt = Prompt({ sigint: true });
-  let color = prompt('Enter a color: ');
-  let type = prompt('Enter a type: ').toLowerCase();
+  let color = prompt(`Enter a color [${Object.keys(cardColors)}]: `);
+  let type = prompt(`Enter a type [${cardTypes}]: `).toLowerCase();
 
   while (!(cardColors[color] && cardTypes.includes(type))) {
-    console.log('Invalid input');
-    color = prompt('Enter a color: ');
-    type = prompt('Enter a type: ');
+    console.log('\nInvalid input');
+    color = prompt(`Enter a color [${Object.keys(cardColors)}]: `);
+    type = prompt(`Enter a type [${cardTypes}]: `).toLowerCase();
   }
 
   return { color: cardColors[color], type };

@@ -1,5 +1,5 @@
 // From https://api.scryfall.com/catalog/card-types
-export const cardTypes = [
+export const apiCardTypes = [
   'artifact',
   'battle',
   'conspiracy',
@@ -18,6 +18,8 @@ export const cardTypes = [
   'sorcery',
   'vanguard',
 ];
+
+export const cardTypes = ['creature', 'enchantment', 'instant', 'sorcery'];
 
 export const cardColors = {
   white: 'w',
