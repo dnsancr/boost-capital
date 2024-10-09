@@ -7,11 +7,12 @@
     "lint": "biome check --write .",
     "test": "vitest run"
   },
+  "dependencies": {
+    "node-fetch": "^3.3.2",
+    "prompt-sync": "^4.2.0"
+  },
   "devDependencies": {
     "@biomejs/biome": "^1.9.3",
     "vitest": "^2.1.2"
-  },
-  "dependencies": {
-    "node-fetch": "^3.3.2"
   }
 }
