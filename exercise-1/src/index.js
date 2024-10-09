@@ -1,11 +1,3 @@
-const inputs = [
-  'hi ((how) are) you (today) [[[my dear friend]]]',
-  'esto es (un texto muy random [si lo es]) [etc]',
-  'hola (como estas) [bien] y tu',
-  '((esta es la cadena inicial))',
-  '(anidados (así)))',
-];
-
 const validInput = (input) => {
   const stack = [];
   const brackets = {
@@ -89,16 +81,16 @@ const rule3 = (str) => {
     .join(' ');
 };
 
-inputs.forEach((input) => {
-  console.log('Input:', input);
+const exercise1 = (input) => {
   if (validInput(input)) {
     let output = rule1(input);
     output = rule2(output);
     if (output.split(' ').length >= 3) {
       output = rule3(output);
     }
-    console.log(`Output: ${output}\n`);
-  } else {
-    console.log('Output: Invalid input');
+    return output;
   }
-});
+  return 'Invalid input';
+};
+
+export default exercise1;

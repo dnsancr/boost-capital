@@ -4,9 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "lint": "biome check --write ."
+    "lint": "biome check --write .",
+    "test": "vitest run"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.3"
+    "@biomejs/biome": "^1.9.3",
+    "vitest": "^2.1.2"
   }
 }
